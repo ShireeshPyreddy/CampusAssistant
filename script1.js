@@ -4,8 +4,6 @@ const chatbox = document.querySelector(".chatbox");
 
 let userMessage;
 
-// Secure OpenAI API URL
-const API_URL = "http://localhost:5555/ask";
 
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
@@ -16,7 +14,7 @@ const createChatLi = (message, className) => {
 };
 
 const generateResponse = (incomingChatLi) => {
-    const API_URL = "http://192.168.0.33:5555/ask";  // Correct OpenAI API URL
+    const API_URL = "http://localhost:5555/ask";  // Correct OpenAI API URL
     const messageElement = incomingChatLi.querySelector("p");
     if (userMessage!="hi"){
         const requestOptions = {
