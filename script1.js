@@ -21,7 +21,6 @@ const generateResponse = (incomingChatLi) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${API_KEY}`
             },
             body: JSON.stringify({"question": userMessage})
         };
