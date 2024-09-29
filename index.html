@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusAssistant</title>
+    <link rel="stylesheet" src="style.css">
+    <style>
+        /* Apply padding and box styling */
+        div {
+            padding: 50px;
+        }
+
+        /* Style for the first div box */
+        div:first-of-type {
+            border: 2px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        /* Styling for the chatBot */
+        .chatBot {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        /* Styling for the header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the close button */
+        #cross {
+            cursor: pointer;
+            color: red;
+            font-size: 18px;
+        }
+
+        /* Styling for chatbox */
+        .chatbox {
+            list-style-type: none;
+            padding: 0;
+            height: 300px;
+            overflow-y: auto;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        /* Styling for chat messages */
+        .chat-incoming p, .chat-outgoing p {
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .chat-incoming p {
+            background-color: #e2f0d9;
+            text-align: left;
+        }
+
+        .chat-outgoing p {
+            background-color: #d9e2f0;
+            text-align: right;
+        }
+
+        /* Styling for chat input */
+        .chat-input {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-input textarea {
+            width: calc(100% - 60px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Ask question related to CPT/OPT & Computer Science department</p>
+    </div>    
+    <div class="chatBot">
+        <header>
+            <h2>CampusAssistant - SUNY Poly</h2>
+            <span alt="Close" id="cross" onclick="cancel()">X</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat-incoming chat">
+                <p>Hey! How can I assist you today?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea rows="1" cols="17" placeholder="Enter a message..."></textarea>
+            <button id="sendBTN">Send</button>
+        </div>
+    </div>
+
+    <script src="script1.js" defer></script>
+</body>
+</html>
