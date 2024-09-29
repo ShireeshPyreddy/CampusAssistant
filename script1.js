@@ -3,10 +3,9 @@ const sendChatBtn = document.querySelector('.chat-input button');
 const chatbox = document.querySelector(".chatbox");
 
 let userMessage;
-const API_KEY = "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";
 
 // Secure OpenAI API URL
-const API_URL = "http://192.168.0.33:5555/ask";
+const API_URL = "http://localhost:5555/ask";
 
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
