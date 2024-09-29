@@ -13,21 +13,20 @@ const createChatLi = (message, className) => {
 };
 
 const generateResponse = (incomingChatLi) => {
-    const API_URL = "http://localhost/ask";  // Correct URL
+    const API_URL = "http://localhost:5555/ask";  // Correct URL
     const messageElement = incomingChatLi.querySelector("p");
-    if (userMessage!="hi"){
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({"question": userMessage})
-        };
-    }
-    else{
-        messageElement.textContent = "Please ask your question..."
-    }
-    fetch(API_URL, requestOptions)
+//    if (userMessage!="hi"){
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"question": userMessage})
+    };
+//    }
+
+
+    fetch("http://localhost:5555/ask", requestOptions)
         .then(res => {
             if (!res.ok) {
                 throw new Error("Network response was not ok");
