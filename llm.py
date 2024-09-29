@@ -3,7 +3,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain_community.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
 
@@ -16,8 +16,6 @@ hf_model = HuggingFaceEmbeddings(model_name=embeddings_model)
 
 docsearch = FAISS.load_local("vectordatabase/faiss_index", hf_model, allow_dangerous_deserialization=True)
 
-query = "When we should I apply for OPT"
-
 
 # Load the LlamaCpp language model, adjust GPU usage based on your hardware
 llm = LlamaCpp(
@@ -27,7 +25,7 @@ llm = LlamaCpp(
     verbose=False,  # Enable detailed logging for debugging
 )
 
-# Define the prompt template with a placeholder for the question
+# Define the prompt templates with a placeholder for the question
 template = """
 Context: {context}
 Question: {question}
@@ -43,6 +41,10 @@ prompt = PromptTemplate(template=template, input_variables=["context", "question
 llm_chain = LLMChain(prompt=prompt, llm=llm)
 
 # while True:
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 
 @app.route('/ask', methods=['POST', 'GET'])
@@ -67,8 +69,8 @@ def ask_question():
         context = ""
 
         for res in results:
-            # print("++++++++++++++++++++++++++++++++++++++++++++++++++")
-            # print(res.page_content)
+            print("++++++++++++++++++++++++++++++++++++++++++++++++++")
+            print(res.page_content)
             context += res.page_content + "\n"
 
         answer = llm_chain.run({"context": context, "question": question})
